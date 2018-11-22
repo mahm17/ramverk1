@@ -53,5 +53,10 @@ return [
             "url" => "ip",
             "title" => "Validera IP-addreser",
         ],
+        [
+            "text" => "Position",
+            "url" => "position",
+            "title" => "Validera IP-addreser med position",
+        ],
     ],
 ];

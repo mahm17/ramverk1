@@ -11,8 +11,6 @@ class JsonController implements ContainerInjectableInterface
 
     public function indexActionGet() : array
     {
-        $title = "Validerad med JSON";
-        $page = $this->di->get("page");
         $address = $this->di->get("request")->getGet("address");
 
         if (filter_var($address, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
@@ -36,19 +34,17 @@ class JsonController implements ContainerInjectableInterface
         }
 
         if (isset($address)) {
-            $domain = "Domännamnet: " . gethostbyaddr($address);
+            $domain = "Domain name: " . gethostbyaddr($address);
         }
 
         $resOne = $ipv4;
         $resTwo = $ipv6;
 
-        $res = [$resOne, $resTwo];
-
         $json = [
             "address" => $address,
             "IPv4" => $resOne,
             "IPv6" => $resTwo,
-            "domain" => $address,
+            "domain" => $domain,
         ];
 
         return [$json];
